@@ -1,0 +1,14 @@
+.imgprop{
+    height: 200px;
+    width: 100%;
+}
+.single {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  img:hover{
+    cursor: pointer;
+    
+  }
+  

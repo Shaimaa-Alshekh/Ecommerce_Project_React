@@ -1,0 +1,13 @@
+.imgprop {
+  width: 100%;
+  aspect-ratio: 3/2;
+  transition: transform 2s;
+
+  margin: 0 auto;
+}
+
+.imgprop:hover {
+
+  transform: scale(.8);
+  cursor: pointer;
+}

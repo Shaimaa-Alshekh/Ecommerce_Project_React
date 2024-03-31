@@ -1,0 +1,27 @@
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: #f4ebeb !important;
+  }
+  .navbar-nav .nav-link{
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  }
+  .navbar-nav .nav-link:hover{
+    color: #f7444e;
+  
+  }
+  .navbar-nav .nav-link:hover svg{
+    fill: #f7444e;
+    background-color: #f7444e;
+
+  }
+  
+  .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #f7444e;
+  }
+  .navbar .container{
+    display: flex;
+    justify-content: space-between;
+  }
+  

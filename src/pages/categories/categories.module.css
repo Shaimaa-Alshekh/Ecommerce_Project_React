@@ -1,0 +1,23 @@
+.mySwiper{
+    padding: 100px 10px;
+
+}
+.categories_section{
+    width: 90%;
+    margin: auto;
+}
+h2{
+    padding-top: 30px;
+    text-align: center;
+    color: #f7444e;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;}
+
+.categoryitem{
+    text-align: center;
+}
+.swiper-pagination-bullet-active {
+        background: #f7444e;
+    }
+    
