@@ -17,7 +17,7 @@
 }
 .SwiperSlide .title{
     position: absolute;
-    top: 150px;
+    top: 50px;
     left: 80px;
     display: flex;
     flex-direction: column;
@@ -56,3 +56,17 @@ gap: 20px;
     border: 1px solid #f7444e;
     color: #f7444e;
 }
+
+@media screen and (max-width: 900px) {
+   .title p{
+    display: none;
+   }
+   .SwiperSlide .title h1{
+    font-size: 30px;
+   }
+   .SwiperSlide .title{
+    top: 130px;
+
+   }
+  }
+

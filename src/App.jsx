@@ -12,7 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductDetailes from "./pages/productdetailes/ProductDetailes";
 import Category from "./pages/category/Category";
-import UserContextProvider from "./context/User";
+import UserContextProvider, { UserContext } from "./context/User";
 import ProtectedRoutes from "./auth/ProtectedRoutes";
 import SendCode from "./pages/login/SendCode";
 import ForgetPassword from "./pages/login/ForgetPassword";
@@ -21,6 +21,7 @@ import Order from "./components/myProfile/Order";
 import Info from "./components/myProfile/Info";
 import Contact from './components/myProfile/Contact';
 import CreatOrder from "./pages/cart/CreatOrder";
+import CartContextProvider from "./context/CountCart";
 
 const router = createBrowserRouter(  [
   {
@@ -124,11 +125,14 @@ const router = createBrowserRouter(  [
   },
 ]);
 function App() {
+  
   return (
     <>
       <UserContextProvider>
+<CartContextProvider>
+<RouterProvider router={router} />
 
-      <RouterProvider router={router} />
+</CartContextProvider>
       </UserContextProvider>
       
 

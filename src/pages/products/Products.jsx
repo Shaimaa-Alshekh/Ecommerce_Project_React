@@ -86,9 +86,9 @@ useEffect(() => {
            
            
           </div>  */}
-          <h1 className="text-center p-2">
+          <h2 className="text-center p-2">
             <strong>Products</strong>
-          </h1>
+          </h2>
           {/*
           
           */}

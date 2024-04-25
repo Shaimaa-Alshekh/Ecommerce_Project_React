@@ -4,6 +4,8 @@ import { UserContext } from "../../context/User";
 import { Bounce, Slide, toast } from "react-toastify";
 import { number, object, string } from "yup";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CountCart";
+import Loader from "../../components/loader/Loader";
 
 function Cart() {
 
@@ -12,7 +14,8 @@ function Cart() {
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState("");
   const [count,setCount]=useState(0);
-   
+  const {setCountCart}=useContext(CartContext);
+
   const navigate=useNavigate();
 
 
@@ -24,6 +27,9 @@ function Cart() {
         const {data}=await axios.get(`${import.meta.env.VITE_API_URL}/cart` ,{headers:{Authorization:`Tariq__${userToken}`}});
         console.log(data);
         setCount(data.count);
+        localStorage.setItem('countCart',data.count);
+        setCountCart(data.count);
+
         console.log(data.products);
         setCart(data.products);
 
@@ -312,12 +318,23 @@ const removeItem=async(id)=>{
               </div>
               <div className="col-lg-2  d-flex ">
                 <button className="btn btn-link " onClick={()=>decreaseItem(cartItem.productId ,cartItem.quantity)}  >
-                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 448 512"><path fill="#121212" d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>                </button>
-                <span className="border p-3 btn btn-outline-danger fs-4 ">{(cartItem.quantity > 0)? cartItem.quantity : 0 }</span>
+                {!loader?
+                   <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 448 512"><path fill="#121212" d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>              
+
+                    :        
+                         <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><path fill="#f7444e" d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"/></svg>                           }
+                </button>
+                  
+                   <span className="border p-3 btn btn-outline-danger fs-4 ">{(cartItem.quantity > 0)? cartItem.quantity : 0 }</span>
 
                 <button className="btn btn-link " onClick={()=>increaseItem(cartItem.productId)}>
+                {!loader?
                        <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 448 512"><path fill="#0f0f0f" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>               
-                 </button>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><path fill="#f7444e" d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"/></svg>                          
+                 }
+
+                       </button>
               </div>
               <div className="col-lg-3">
                 <h5 className="p-0">price=$<span className="text-black">{cartItem.details.finalPrice} </span> </h5>

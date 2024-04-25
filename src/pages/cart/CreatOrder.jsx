@@ -174,15 +174,15 @@ if(loader){
   <div className="container h-100 py-5">
     <div className="row d-flex justify-content-between  h-100">
     <h3 className=" text-center text-danger fs-1 ">Order </h3>
-    <div className="card mb-4 p-2 bg-light col-6  d-flex flex-row flex-wrap gap-2">
+    <div className="card mb-4 p-3 bg-light col-lg-12 col-md-12 d-flex flex-row flex-wrap gap-2">
       {cart.map(item=>(
         <div className="col-2  bg-primary rounded-circle"key={item.productId} style={{width:'100px',height:'100px'}}>
-                <img src={item.details.mainImage.secure_url} className="img-fluid rounded-circle w-100 h-100" alt="Cotton T-shirt" />
+                <img src={item.details.mainImage.secure_url} className="img-fluid rounded-circle w-100 h-100 border border-danger" alt="Cotton T-shirt" />
               </div>
       ))}
 
 </div>
-<div className="card mb-4 bg-light col-6 p-2">
+<div className="card mb-4 bg-light col-lg-12 col-md-12 p-2">
   <div className="card-body p-2 d-flex flex-row w-100">
     <form className="form-outline flex-fill  w-100" onSubmit={handleSubmitOrder}>
       <div className="form-group w-100 ">

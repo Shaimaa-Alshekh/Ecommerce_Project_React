@@ -103,11 +103,11 @@ const [loader, setLoader] = useState(true);
          <div className="card-header p-2">
            <div className="row d-flex justify-content-between align-items-center ">
              <div className='col-lg-11'>
-               <p className="fw-bold mb-2 fs-5"> Order Number: <span className='text-danger'>{order.indexOf(orderitem)}</span></p>
+               <p className="fw-bold mb-2 fs-5"> Order Number: <span className='text-danger'>{order.indexOf(orderitem)+1}</span></p>
              </div>
              <div className=" col-lg-1">
               
-                <button  className="btn btn-danger" onClick={()=>removeOrder(orderitem._id) }>
+                <button  className="btn btn-danger" onClick={()=>removeOrder(orderitem._id) }   disabled={orderitem.status=='deliverd'?'disabled':null}>
                  
                     cancel
                     </button>
@@ -120,7 +120,7 @@ const [loader, setLoader] = useState(true);
            <div className="d-flex flex-row mb-4 pb-2">
              <div className="flex-fill">
                <h3 className="bold text-center">Order Detailes </h3>
-               <p className="text-dark fw-bold">Order ID : <span className="text-danger">{orderitem._id}</span></p>
+               <p className="text-dark fw-bold">Order ID : <span className="text-danger" >{orderitem._id}</span></p>
                <p className="text-dark fw-bold"> Qt: <span className='text-danger'>{orderitem.products.length}</span> item</p>
                <p className="text-dark fw-bold">Price : <span className="text-danger "> $ {orderitem.finalPrice} </span><span className=" text-danger"> {orderitem.paymentType} </span></p>
                <p className="text-dark fw-bold">Tracking Status : <span className="text-danger">{orderitem.status}</span></p>
